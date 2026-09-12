@@ -1,11 +1,11 @@
 
-import heroImage from "../assets/hero.png";
+import heroImage from "../assets/banner-stack.png";
 
 
 const Hero = () => {
   return (
-    <section  className=" container mx-auto section-anchor">
-      <div className="container-page grid min-h-[510px] items-center gap-10 py-14 md:grid-cols-2 md:py-20">
+    <section className=" container mx-auto section-anchor">
+      <div className="container-page grid min-h-127 items-center gap-10 py-14 md:grid-cols-2 md:py-20">
         <div>
           <h1 className="max-w-xl text-4xl font-extrabold leading-tight tracking-tight text-slate-950 sm:text-5xl">
             Build Your Ideal <br />

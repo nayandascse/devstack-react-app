@@ -4,6 +4,11 @@
 :root {
   --brand-gradient: linear-gradient(90deg, #ff7a18 0%, #ff3d81 48%, #7c3aed 100%);
 }
+
+button, a {
+  -webkit-tap-highlight-color: transparent;
+}
+
 .brand-gradient {
   background: var(--brand-gradient);
   -webkit-background-clip: text;

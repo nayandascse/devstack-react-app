@@ -1,18 +1,95 @@
+import { useEffect, useMemo, useState } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
+import "react-toastify/dist/ReactToastify.css";
 import './App.css'
-import Hero from './components/Hero'
+
 import Navbar from './components/Navbar'
+import Hero from './components/Hero'
+import TechnologyCard from './components/TechnologyCard'
+import type { Technology } from "./types/technology";
+
 
 function App() {
 
+  const [technologies, setTechnologies] = useState<Technology[]>([]);
+  const [stack, setStack] = useState<Technology[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadTechnologies = async () => {
+      try {
+        const response = await fetch("/public/technologies.json");
+        if (!response.ok) throw new Error("Failed to load technologies");
+
+        const data: Technology[] = await response.json();
+        setTechnologies(data);
+      } catch {
+        toast.error("Could not load technology data.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadTechnologies();
+  }, []);
+
+  const stackIds = useMemo(() => new Set(stack.map((item) => item.id)), [stack]);
+
+  const addToStack = (technology: Technology) => {
+    if (stackIds.has(technology.id)) {
+      toast.warning(`${technology.name} is already in your stack.`);
+      return;
+    }
+
+    setStack((current) => [...current, technology]);
+    toast.success(`${technology.name} added to your stack.`);
+  };
+
+ 
 
   return (
     <>
-    <Navbar/ >
-    <Hero/ >
-    
+      <Navbar />
+      <Hero />
+      <main id="technologies" className="section-anchor container-page py-12">
+        <div className="mb-8">
+          <p className="text-sm font-bold uppercase tracking-widest text-slate-500">
+            Explore
+          </p>
+          <h2 className="mt-2 text-3xl font-extrabold text-slate-950">
+            Technologies
+          </h2>
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600">
+            Pick the tools you want in your development stack.
+          </p>
+        </div>
+
+        {loading ? (
+          <div className="flex min-h-64 items-center justify-center rounded-2xl border border-slate-200 bg-white">
+            <div className="flex items-center gap-3 text-sm font-semibold text-slate-600">
+              <span className="h-5 w-5 animate-spin rounded-full border-2 border-slate-200 border-t-pink-500" />
+              Loading technologies...
+            </div>
+          </div>
+        ) : (
+          <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_300px]">
+            <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
+              {technologies.map((technology) => (
+                <TechnologyCard
+                  key={technology.id}
+                  technology={technology}
+                  isAdded={stackIds.has(technology.id)}
+                  onAdd={addToStack}
+                />
+              ))}
+            </div>
 
 
+          </div>
+        )}
+      </main>
 
     </>
   )
