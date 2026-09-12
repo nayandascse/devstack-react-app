@@ -2,7 +2,7 @@
 import { RxHamburgerMenu } from "react-icons/rx";
 import logo from "../assets/logo-text.png";
 
-function Navbar() {
+const Navbar = () => {
 
   return (
     <header className="sticky top-0 z-50 border-b border-slate-100 bg-white/95 backdrop-blur">
