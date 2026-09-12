@@ -43,7 +43,7 @@ const Navbar = () => {
           </a>
           <a
             href="#signup"
-            className="rounded-full px-4 py-2 text-sm font-semibold text-white bg-[#D91B7E]"
+            className="rounded-full px-4 py-2 text-sm font-semibold text-white brand-gradient-bg"
           >
             Sign Up
           </a>

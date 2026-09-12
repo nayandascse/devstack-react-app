@@ -8,6 +8,7 @@ import './App.css'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import TechnologyCard from './components/TechnologyCard'
+import StackSidebar from "./components/StackSidebar";
 import type { Technology } from "./types/technology";
 
 
@@ -47,20 +48,31 @@ function App() {
     toast.success(`${technology.name} added to your stack.`);
   };
 
- 
+  const removeFromStack = (id: string) => {
+    const removed = stack.find((item) => item.id === id);
+    setStack((current) => current.filter((item) => item.id !== id));
+
+    if (removed) {
+      toast.info(`${removed.name} removed from your stack.`);
+    }
+  };
+
+  const removeAll = () => {
+    if (stack.length === 0) return;
+    setStack([]);
+    toast.info("All technologies removed from your stack.");
+  };
 
   return (
     <>
       <Navbar />
       <Hero />
-      <main id="technologies" className="section-anchor container-page py-12">
+      <main id="technologies" className="container mx-auto section-anchor container-page py-12 ">
         <div className="mb-8">
-          <p className="text-sm font-bold uppercase tracking-widest text-slate-500">
-            Explore
-          </p>
-          <h2 className="mt-2 text-3xl font-extrabold text-slate-950">
-            Technologies
+          <h2 className="mt-2 text-3xl font-extrabold">
+            Explore the<span className="mt-2 font-extrabold brand-gradient "> Technologies</span>
           </h2>
+
           <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600">
             Pick the tools you want in your development stack.
           </p>
@@ -85,7 +97,11 @@ function App() {
                 />
               ))}
             </div>
-
+            <StackSidebar
+              stack={stack}
+              onRemove={removeFromStack}
+              onRemoveAll={removeAll}
+            />
 
           </div>
         )}
