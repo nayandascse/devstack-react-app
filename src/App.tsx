@@ -17,7 +17,7 @@ function App() {
 useEffect(() => {
   const loadTechnologies = async () => {
     try {
-      const response = await fetch("/public/technologies.json");
+      const response = await fetch("/technologies.json");
 
       if (!response.ok) {
         throw new Error("Failed to load technologies");
