@@ -14,23 +14,31 @@ function App() {
   const [stack, setStack] = useState<Technology[]>([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const loadTechnologies = async () => {
-      try {
-        const response = await fetch("/public/technologies.json");
-        if (!response.ok) throw new Error("Failed to load technologies");
+useEffect(() => {
+  const loadTechnologies = async () => {
+    try {
+      const response = await fetch("/public/technologies.json");
 
-        const data: Technology[] = await response.json();
-        setTechnologies(data);
-      } catch {
-        toast.error("Could not load technology data.");
-      } finally {
-        setLoading(false);
+      if (!response.ok) {
+        throw new Error("Failed to load technologies");
       }
-    };
 
-    loadTechnologies();
-  }, []);
+      const data: Technology[] = await response.json();
+
+     
+      setTimeout(() => {
+        setTechnologies(data);
+        setLoading(false);
+      }, 1000);
+
+    } catch {
+      toast.error("Could not load technology data.");
+      setLoading(false);
+    }
+  };
+
+  loadTechnologies();
+}, []);
 
   const stackIds = useMemo(() => new Set(stack.map((item) => item.id)), [stack]);
 
