@@ -20,9 +20,9 @@ const Footer = () => {
             modern software.
           </p>
           <div className="mt-5 flex gap-4 text-sm text-shadow-black">
-            <a href="#github" className="hover:text-black hover:font-semibold">GitHub</a>
-            <a href="#twitter" className="hover:text-black hover:font-semibold">Twitter</a>
-            <a href="#linkedin" className="hover:text-black hover:font-semibold">LinkedIn</a>
+            <a href="#github" className="hover:text-[#DB2777]">GitHub</a>
+            <a href="#twitter" className="hover:text-[#DB2777]">Twitter</a>
+            <a href="#linkedin" className="hover:text-[#DB2777]">LinkedIn</a>
           </div>
         </div>
 
@@ -34,7 +34,7 @@ const Footer = () => {
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
-                  className="block text-sm text-shadow-black hover:text-black hover:font-semibold"
+                  className="block text-sm text-shadow-black hover:text-[#DB2777]"
                 >
                   {item}
                 </a>
@@ -48,8 +48,8 @@ const Footer = () => {
         <div className="container mx-auto flex flex-col gap-3 py-5 text-xs text-shadow-black sm:flex-row sm:items-center sm:justify-between">
           <p>© 2026 Dev Stack. All rights reserved.</p>
           <div className="flex gap-5">
-            <a href="#privacy" className="hover:text-black hover:font-semibold">Privacy</a>
-            <a href="#terms" className="hover:text-black hover:font-semibold">Terms</a>
+            <a href="#privacy" className="hover:text-[#DB2777]">Privacy</a>
+            <a href="#terms" className="hover:text-[#DB2777]">Terms</a>
           </div>
         </div>
       </div>

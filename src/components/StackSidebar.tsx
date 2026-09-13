@@ -16,14 +16,7 @@ const StackSidebar = ({ stack, onRemove, onRemoveAll }: Props) => {
                         {stack.length} Technology{stack.length === 1 ? "" : "ies"} Selected
                     </p>
                 </div>
-                {stack.length > 0 && (
-                    <button
-                        onClick={onRemoveAll}
-                        className="text-xs font-bold text-rose-500 hover:text-rose-700"
-                    >
-                        Remove All
-                    </button>
-                )}
+
             </div>
 
             {stack.length === 0 ? (
@@ -60,7 +53,17 @@ const StackSidebar = ({ stack, onRemove, onRemoveAll }: Props) => {
                                 ×
                             </button>
                         </div>
+
                     ))}
+
+                    
+                    <button
+                        onClick={onRemoveAll}
+                        className="w-full brand-gradient-bg text-xs font-bold text-white rounded-full  py-3 text-[15px] hover:opacity-90 transition"
+                    >
+                        Remove All
+                    </button>
+
                 </div>
             )}
         </aside>
