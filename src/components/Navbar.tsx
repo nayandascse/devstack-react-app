@@ -21,18 +21,21 @@ const Navbar = () => {
         </a>
 
         <div>
-          <ul className="hidden md:flex gap-4 items-center">
-            <li>
+          <ul className="hidden md:flex gap-4 items-center ">
+            <li className="hover:text-[#DB2777]">
               <a href="/">Home</a>
             </li>
-            <li>
+            <li className="hover:text-[#DB2777]">
               <a href="/">Technologies</a>
             </li>
-            <li>
+            <li className="hover:text-[#DB2777]">
               <a href="/">Projects</a>
             </li>
-            <li>
+            <li className="hover:text-[#DB2777]">
               <a href="/">About</a>
+            </li>
+            <li className="hover:text-[#DB2777]">
+              <a href="/">Contact</a>
             </li>
           </ul>
         </div>
