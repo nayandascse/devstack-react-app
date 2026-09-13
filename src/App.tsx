@@ -1,15 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-
-import "react-toastify/dist/ReactToastify.css";
-import './App.css'
-
+import { toast, ToastContainer } from "react-toastify";
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import TechnologyCard from './components/TechnologyCard'
 import StackSidebar from "./components/StackSidebar";
 import type { Technology } from "./types/technology";
+import Footer from "./components/Footer";
 
 
 function App() {
@@ -106,6 +102,9 @@ function App() {
           </div>
         )}
       </main>
+
+      <Footer />
+      <ToastContainer position="bottom-right" autoClose={2200} theme="light" />
 
     </>
   )

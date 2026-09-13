@@ -43,7 +43,7 @@ const TechnologyCard = ({ technology, isAdded, onAdd }: Props) => {
         <button
           disabled={isAdded}
           onClick={() => onAdd(technology)}
-          className={`w-full rounded-full  py-4 text-[15px] font-bold transition ${
+          className={`w-full rounded-full  py-3 text-[15px] font-bold transition ${
             isAdded
               ? "cursor-not-allowed bg-slate-100 text-slate-400"
               : "text-white hover:opacity-90 brand-gradient-bg"

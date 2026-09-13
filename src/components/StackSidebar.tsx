@@ -6,7 +6,7 @@ type Props = {
     onRemoveAll: () => void;
 };
 
-export default function StackSidebar({ stack, onRemove, onRemoveAll }: Props) {
+const StackSidebar = ({ stack, onRemove, onRemoveAll }: Props) => {
     return (
         <aside className="h-fit rounded-2xl border border-slate-200 bg-white p-5 shadow-sm lg:sticky lg:top-24">
             <div className="flex items-center justify-between gap-3">
@@ -66,3 +66,5 @@ export default function StackSidebar({ stack, onRemove, onRemoveAll }: Props) {
         </aside>
     );
 }
+
+export default StackSidebar;
